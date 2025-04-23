@@ -28,7 +28,7 @@ namespace Redis.Controllers
                 var cacheData = _cacheService.GetData<IEnumerable<Customer>>("Customer");
                 if (cacheData == null)
                 {
-                    var expirationTime = DateTimeOffset.Now.AddMinutes(60.0);
+                    var expirationTime =  DateTimeOffset.Now.AddMinutes(60.0);
                     cacheData = _studentdbContext.Customers.ToList();
                     _cacheService.SetData<IEnumerable<Customer>>("Customer", cacheData, expirationTime);
                     return cacheData;
